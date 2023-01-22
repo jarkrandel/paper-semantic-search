@@ -13,14 +13,15 @@ if len(sys.argv) > 1 and sys.argv[1] == 'debug':
     prefix = "data/debug/debug-"
 
 # load arxiv dataset, sentence transformer model for sentence embeddings,
-# and stored vector embeddings of paper titles. We use the assymmetric
+# and stored vector embeddings of paper titles/abstracts. We use the assymmetric
 # msmarco model for abstracts because we expect the query to be much shorter...
+print("Loading data...")
 title_embs = np.load(prefix + 'title-embeddings.npy')
-abstract_embs = np.load(prefix + 'abstract-embeddings-msmarco.npy')
+abstract_embs = np.load(prefix + 'normalized-abstract-embeddings-msmarco.npy')
 df = pd.read_json(prefix + 'arxiv-metadata.json', lines=True)
 title_model = SentenceTransformer('all-MiniLM-L6-v2')
 abstract_model = SentenceTransformer('msmarco-MiniLM-L-12-v3')
-
+print("Done.")
 # all-MiniLM-L6-v2 and msmarco... embeddings are 384 dimensional.
 title_index = faiss.IndexFlatL2(384)
 title_index.add(title_embs)
