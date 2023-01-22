@@ -1,0 +1,58 @@
+h1, h2 {
+    font-family: "Montserrat";
+    text-align: center;
+    padding: 5px;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+p {
+    font-family: "Montserrat";
+    width: auto;
+    padding: 2px;
+    margin: 2px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+header, .container {
+    background: white;
+    border: 5px solid rgb(0, 0, 0);
+    width: auto;
+    margin: 20px 5%;
+    padding: 20px;
+}
+
+body {
+    width: auto;
+    background: rgb(85, 108, 240);
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    width: 50%;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 2px 2px 2px 2px;
+    margin: 10px 5px 10px 5px;
+}
+
+li, select, label {
+    font-family: "Montserrat";
+}
+
+.search-item {
+    border: 2px solid grey;
+    border-radius: 5px;
+    margin: 10px;  
+    width: 95%;
+}

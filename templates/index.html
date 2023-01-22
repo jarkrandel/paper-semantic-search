@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>PaperSearch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='paper-style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  </head>
+  <body>
+    <header>
+      <h1>Paper Semantic Search</h1>
+      <h2>Enter a query and perform a similarity search against titles or abstracts of all arxiv papers.</h2>
+      <form role="search" method="post" action="http://localhost:5000/">
+        <!-- <label for="search-type">Select a search type: </label> -->
+        <select id="search-type" name="search-type">
+          {% if search_type == 'title' %}
+            <option value="title" selected>title</option>
+          {% else %}
+            <option value="title">title</option>
+          {% endif %}
+          {% if search_type == 'abstract' %}
+            <option value="abstract" selected>abstract</option>
+          {% else %}
+            <option value="abstract">abstract</option>
+          {% endif %}
+        </select>
+        <label for="search"></label>
+        <input type="search" name="q" id='search' placeholder='Enter search query'>
+        <button type="submit">Search</button>
+      </form>
+    </header>
+    <div class="container">
+      <ol>
+        {% for i in range(indices | length) %}
+          <li class="search-item">  
+            <p><a href="https://arxiv.org/abs/{{ids[i]}}">arxiv:{{ids[i]}}</a></p>
+            <p class="title"><strong>{{ titles[i] }}</strong></p>
+            <p><strong>Authors:</strong> {{authors[i]}} </p>
+            <p><strong>Categories:</strong> {{categories[i]}}</p>
+            <p class="abstract"><strong>Abstract:</strong>{{ abstracts[i] }}</p>
+          </li>  
+        {% endfor %}
+      </ol>
+    </div>
+    <!--
+      <img src="images/papers-icon.png" alt="An icon depicting a document." />
+    <button>Change user</button> 
+     <script src="{{ url_for('static', filename='main.js') }}"></script>
+    -->
+    </body>
+</html>
